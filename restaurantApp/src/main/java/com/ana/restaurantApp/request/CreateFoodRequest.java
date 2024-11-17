@@ -1,7 +1,7 @@
 package com.ana.restaurantApp.request;
 
 import com.ana.restaurantApp.model.Category;
-import com.ana.restaurantApp.model.Ingredients;
+import com.ana.restaurantApp.model.Ingredient;
 import lombok.Data;
 
 import java.util.List;
@@ -15,6 +15,6 @@ public class CreateFoodRequest {
     private List<String> images;
     private Long restaurantId;
     private boolean vegetarian;
-    private List<Ingredients> ingredients;
+    private List<Ingredient> ingredients;
 }
 
