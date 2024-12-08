@@ -2,6 +2,7 @@ package com.ana.restaurantApp.model;
 
 import com.ana.restaurantApp.dto.RestaurantDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ public class User {
     private USER_ROLE role = USER_ROLE.USER;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference
     private List<Order> orders = new ArrayList<>();
 
     @ElementCollection

@@ -1,6 +1,7 @@
 package com.ana.restaurantApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class IngredientCategory {
     @ManyToOne
     private Restaurant restaurant;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "ingredientCategory", cascade = CascadeType.ALL)
     private List<Ingredient> ingredients = new ArrayList<>();
 }

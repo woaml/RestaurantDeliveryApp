@@ -1,5 +1,6 @@
 package com.ana.restaurantApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ public class Ingredient {
 
     private String name;
 
+    @JsonBackReference
     @ManyToOne
     private IngredientCategory ingredientCategory;
 
