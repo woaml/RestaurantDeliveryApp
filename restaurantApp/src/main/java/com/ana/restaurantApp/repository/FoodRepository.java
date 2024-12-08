@@ -10,7 +10,6 @@ import java.util.List;
 public interface FoodRepository extends JpaRepository<Food, Long> {
     List<Food> findByRestaurantId(Long restaurantId);
 
-    @Query("SELECT f FROM Food f WHERE lower(f.name) LIKE %:keyword% OR lower(f.category.name) LIKE %:keyword%")
-    //List<Food> searchFood(String keyword);
+    @Query("SELECT f FROM Food f WHERE lower(f.name) LIKE %:keyword%")
     List<Food> searchFood(@Param("keyword") String keyword);
 }
