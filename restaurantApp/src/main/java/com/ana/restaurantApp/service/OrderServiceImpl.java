@@ -21,9 +21,6 @@ public class OrderServiceImpl implements OrderService{
     private OrderRepository orderRepository;
 
     @Autowired
-    private OrderItemRepository orderItemRepository;
-
-    @Autowired
     private AddressRepository addressRepository;
 
     @Autowired
@@ -60,15 +57,17 @@ public class OrderServiceImpl implements OrderService{
             orderItem.setQuantity(cartItem.getQuantity());
             orderItem.setIngredients(cartItem.getIngredients());
             orderItem.setTotalPrice(cartItem.getTotalPrice());
-            OrderItem savedOrderItem = orderItemRepository.save(orderItem);
-            orderItems.add(savedOrderItem);
+            orderItem.setOrder(createdOrder);
+            orderItems.add(orderItem);
         }
-        Long totalPrice = cartService.calculateCartTotals(cart);
         createdOrder.setOrderItems(orderItems);
+        Long totalPrice = cartService.calculateCartTotals(cart);
         createdOrder.setTotalPrice(totalPrice);
+        createdOrder.setTotalItem(orderItems.size());
+
         Order savedOrder = orderRepository.save(createdOrder);
         restaurant.getOrders().add(savedOrder);
-        return createdOrder;
+        return savedOrder;
     }
 
     @Override

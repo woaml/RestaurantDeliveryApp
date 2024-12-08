@@ -28,7 +28,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant createRestaurant(CreateRestaurantRequest req, User user) {
         Address address = addressRepository.save(req.getAddress());
-
         Restaurant restaurant = new Restaurant();
         restaurant.setAddress(address);
         restaurant.setCuisine(req.getCuisine());
@@ -37,7 +36,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         restaurant.setName(req.getName());
         restaurant.setOpeningHours(req.getOpeningHours());
         restaurant.setOwner(user);
-
+        restaurant.setPhone(req.getPhone());
         return restaurantRepository.save(restaurant);
     }
 
