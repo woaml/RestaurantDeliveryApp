@@ -21,16 +21,11 @@ public class FoodController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private RestaurantService restaurantService;
-
     @GetMapping("/search")
     public ResponseEntity<List<Food>> searchFood(@RequestParam String keyword,
                                                  @RequestHeader("Authorization") String jwt) throws Exception {
         User user = userService.findUserByJwtToken(jwt);
-        System.out.println("Searching for keyword: " + keyword);
         List<Food> foods = foodService.searchFood(keyword);
-        System.out.println("Found foods: " + foods);
         return new ResponseEntity<>(foods, HttpStatus.OK);
     }
 

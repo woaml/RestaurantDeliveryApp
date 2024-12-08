@@ -1,6 +1,5 @@
 package com.ana.restaurantApp.controller;
 
-
 import com.ana.restaurantApp.model.Cart;
 import com.ana.restaurantApp.model.CartItem;
 import com.ana.restaurantApp.model.User;
@@ -25,7 +24,7 @@ public class CartController {
     @PutMapping("/cart/add")
     public ResponseEntity<CartItem> addItemToCart(
             @RequestBody AddCartItemRequest req,
-            @RequestHeader("Authorization") String jwt
+            @RequestHeader("Authorization" ) String jwt
     ) throws Exception {
         CartItem cartItem = cartService.addItemToCart(req, jwt);
         return new ResponseEntity<>(cartItem, HttpStatus.OK);

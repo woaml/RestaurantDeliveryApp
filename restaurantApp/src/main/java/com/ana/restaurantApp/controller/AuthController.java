@@ -61,6 +61,7 @@ public class AuthController {
 
         Cart cart = new Cart();
         cart.setUser(savedUser);
+        cart.setTotal(0L);
         cartRepository.save(cart);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
